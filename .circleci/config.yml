@@ -1,0 +1,81 @@
+# CircleCI 2.0 configuration file
+
+# Check https://circleci.com/docs/1.0/language-nodejs/ for more details
+version: 2
+defaults: &defaults
+  docker:
+    - image: circleci/node:carbon
+  working_directory: ~/watch-tower
+  environment:
+    TERM: xterm-256color
+
+install_npm_packages: &install_npm_packages
+  run:
+    name: Install NPM packages
+    command: yarn install
+
+attach_workspace: &attach_workspace
+  attach_workspace:
+    at: ~/watch-tower
+
+filters: &filters
+  filters:
+    branches:
+      only:
+        - master
+        - develop
+        - /(release|hotfix)\/v[0-9].[0-9].[0-9]/
+
+persist_to_workspace: &persist_to_workspace
+  persist_to_workspace:
+    root: .
+    paths: .
+
+jobs:
+  checkout:
+    <<: *defaults
+    steps:
+      - checkout
+      - *attach_workspace
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-cache-{{ .Branch }}
+            - yarn-cache-
+      - *install_npm_packages
+      - save_cache:
+          key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths: node_modules
+      - *persist_to_workspace
+
+  check_vulnerabilities:
+    <<: *defaults
+    steps:
+      - *attach_workspace
+      - *install_npm_packages
+      - run:
+          name: Verify and Check Npm packages for vulnerabilities
+          command: |
+            yarn check --integrity
+            npx nsp check
+
+  test:
+    <<: *defaults
+    steps:
+      - *attach_workspace
+      - *install_npm_packages
+      - run:
+          name: Run travela Test Suites
+          command: yarn test
+
+workflows:
+  version: 2
+  run_tests:
+    jobs:
+      - checkout
+      - check_vulnerabilities:
+          requires:
+            - checkout
+      - test:
+          requires:
+            - checkout
