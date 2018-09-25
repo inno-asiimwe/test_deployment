@@ -59,6 +59,15 @@ jobs:
             yarn check --integrity
             npx nsp check
 
+  lint:
+    <<: *defaults
+    steps:
+      - *attach_workspace
+      - *install_npm_packages
+      - run:
+          name: Run watch-tower Test Suites
+          command: yarn lint
+
   test:
     <<: *defaults
     steps:
@@ -74,6 +83,9 @@ workflows:
     jobs:
       - checkout
       - check_vulnerabilities:
+          requires:
+            - checkout
+      - lint:
           requires:
             - checkout
       - test:

@@ -1,0 +1,11 @@
+# svg files
+src/**/*.svg
+
+# css
+src/**/*.css
+
+# serviceworker file
+src/**/registerServiceWorker.js
+
+# build files
+build/*
