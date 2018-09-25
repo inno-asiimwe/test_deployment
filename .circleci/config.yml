@@ -65,7 +65,7 @@ jobs:
       - *attach_workspace
       - *install_npm_packages
       - run:
-          name: Run travela Test Suites
+          name: Run watch-tower Test Suites
           command: yarn test
 
 workflows:
