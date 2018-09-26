@@ -11,6 +11,6 @@ it('renders without crashing', () => {
 
 it('renders welcome message', () => {
   const wrapper = shallow(<App />);
-  const welcome = <h1 className="App-title">Welcome to React</h1>;
+  const welcome = <h1 className="App-title">Welcome to WatchTower</h1>;
   expect(wrapper.contains(welcome)).toEqual(true);
 });
