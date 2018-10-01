@@ -30,6 +30,12 @@ build-image:
 	@ ${INFO} "Build Completed successfully"
 	@ echo " "
 
+## Set local url on mac
+set-url:
+	@ ${INFO} "Updating hosts file"
+	@ echo "127.0.0.1  watchtower-dev.andela.com" | sudo tee -a /etc/hosts
+	@ ${INFO} "Update completed successfully"
+
 ## Start local development server
 start:build-image
 	@ ${INFO} "Starting local development server"
@@ -44,6 +50,12 @@ test:build-image
 ssh:build-image
 	${INFO} "Opening web container terminal"
 	@ docker-compose -f $(DOCKER_DEV_COMPOSE_FILE) run --rm --service-ports web bash
+
+## Stop local development server containers
+stop:
+	${INFO} "Stop development server containers"
+	@ docker-compose -f $(DOCKER_DEV_COMPOSE_FILE) down -v
+	${INFO} "All containers stopped successfully"
 
 ## Remove all images
 clean:
