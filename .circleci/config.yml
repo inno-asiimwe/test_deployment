@@ -68,14 +68,23 @@ jobs:
           name: Run watch-tower Test Suites
           command: yarn lint
 
-  test:
+  test_and_report:
     <<: *defaults
     steps:
       - *attach_workspace
       - *install_npm_packages
       - run:
+          name: Install codeclimate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
           name: Run watch-tower Test Suites
-          command: yarn test
+          command: |
+              ./cc-test-reporter before-build
+              yarn test --coverage
+              ./cc-test-reporter format-coverage coverage/lcov.info -t lcov
+              ./cc-test-reporter upload-coverage
 
 workflows:
   version: 2
@@ -88,6 +97,6 @@ workflows:
       - lint:
           requires:
             - checkout
-      - test:
+      - test_and_report:
           requires:
             - checkout
