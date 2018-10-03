@@ -13,5 +13,8 @@ src/**/registerServiceWorker.js
 # build files
 build/*
 
+# static files
+src/static
+
 # snapshot files
 src/**/*.snap

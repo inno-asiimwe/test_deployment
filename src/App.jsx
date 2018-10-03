@@ -1,9 +1,15 @@
 import React from 'react';
-import './App.css';
 import Routes from './routes';
 
-export default () => (
+/**
+ * Renders the Routes
+ *
+ * @routes {JSX} React component
+ */
+const App = () => (
   <div>
     <Routes />
   </div>
 );
+
+export default App;
