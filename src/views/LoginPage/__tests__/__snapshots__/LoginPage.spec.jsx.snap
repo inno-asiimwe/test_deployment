@@ -3,7 +3,10 @@
 exports[`<LoginPage /> should match snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <LoginPage />,
+  Symbol(enzyme.__unrendered__): <LoginPage
+    authHostUrl="TEST_AUTH_URL"
+    authRedirectUrl="TEST_REDIRECT_URL"
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -24,7 +27,7 @@ ShallowWrapper {
           <img
                     alt="watch-tower-logo"
                     className="login-page__logo"
-                    src="Logo.svg"
+                    src="Logo-watchTower.svg"
           />
           <span
                     className="login-page__text-by"
@@ -59,8 +62,9 @@ ShallowWrapper {
 >
           <a
                     className="login-page__btn"
-                    href="http://localhost:3000/login?redirect_url=dashboard"
+                    href="TEST_AUTH_URL/login?redirect_url=TEST_REDIRECT_URL"
                     onClick={[Function]}
+                    tabIndex={0}
           >
                     <img
                               alt="google-icon"
@@ -91,7 +95,7 @@ ShallowWrapper {
             <img
               alt="watch-tower-logo"
               className="login-page__logo"
-              src="Logo.svg"
+              src="Logo-watchTower.svg"
 />,
             <span
               className="login-page__text-by"
@@ -115,7 +119,7 @@ ShallowWrapper {
             "props": Object {
               "alt": "watch-tower-logo",
               "className": "login-page__logo",
-              "src": "Logo.svg",
+              "src": "Logo-watchTower.svg",
             },
             "ref": null,
             "rendered": null,
@@ -201,8 +205,9 @@ ShallowWrapper {
         "props": Object {
           "children": <a
             className="login-page__btn"
-            href="http://localhost:3000/login?redirect_url=dashboard"
+            href="TEST_AUTH_URL/login?redirect_url=TEST_REDIRECT_URL"
             onClick={[Function]}
+            tabIndex={0}
 >
             <img
                         alt="google-icon"
@@ -245,8 +250,9 @@ ShallowWrapper {
 </span>,
             ],
             "className": "login-page__btn",
-            "href": "http://localhost:3000/login?redirect_url=dashboard",
+            "href": "TEST_AUTH_URL/login?redirect_url=TEST_REDIRECT_URL",
             "onClick": [Function],
+            "tabIndex": 0,
           },
           "ref": null,
           "rendered": Array [
@@ -307,7 +313,7 @@ ShallowWrapper {
             <img
                         alt="watch-tower-logo"
                         className="login-page__logo"
-                        src="Logo.svg"
+                        src="Logo-watchTower.svg"
             />
             <span
                         className="login-page__text-by"
@@ -342,8 +348,9 @@ ShallowWrapper {
 >
             <a
                         className="login-page__btn"
-                        href="http://localhost:3000/login?redirect_url=dashboard"
+                        href="TEST_AUTH_URL/login?redirect_url=TEST_REDIRECT_URL"
                         onClick={[Function]}
+                        tabIndex={0}
             >
                         <img
                                     alt="google-icon"
@@ -374,7 +381,7 @@ ShallowWrapper {
               <img
                 alt="watch-tower-logo"
                 className="login-page__logo"
-                src="Logo.svg"
+                src="Logo-watchTower.svg"
 />,
               <span
                 className="login-page__text-by"
@@ -398,7 +405,7 @@ ShallowWrapper {
               "props": Object {
                 "alt": "watch-tower-logo",
                 "className": "login-page__logo",
-                "src": "Logo.svg",
+                "src": "Logo-watchTower.svg",
               },
               "ref": null,
               "rendered": null,
@@ -484,8 +491,9 @@ ShallowWrapper {
           "props": Object {
             "children": <a
               className="login-page__btn"
-              href="http://localhost:3000/login?redirect_url=dashboard"
+              href="TEST_AUTH_URL/login?redirect_url=TEST_REDIRECT_URL"
               onClick={[Function]}
+              tabIndex={0}
 >
               <img
                             alt="google-icon"
@@ -528,8 +536,9 @@ ShallowWrapper {
 </span>,
               ],
               "className": "login-page__btn",
-              "href": "http://localhost:3000/login?redirect_url=dashboard",
+              "href": "TEST_AUTH_URL/login?redirect_url=TEST_REDIRECT_URL",
               "onClick": [Function],
+              "tabIndex": 0,
             },
             "ref": null,
             "rendered": Array [

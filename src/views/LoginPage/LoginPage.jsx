@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import authService from '../../services/auth';
 import andelaLogo from '../../static/Logo-andela.png';
 import googleLogo from '../../static/icons8-google-48.png';
 import watchTowerLogo from '../../static/Logo-watchTower.svg';
@@ -12,22 +15,29 @@ import './LoginPage.css';
 class LoginPage extends Component {
   constructor(props) {
     super(props);
+    const { authHostUrl } = this.props;
+    const { authRedirectUrl } = this.props;
+
     this.state = {
-      url: `${process.env.REACT_APP_ANDELA_AUTH_HOST}/login?redirect_url=${
-        process.env.REACT_APP_GOOGLE_AUTH_REDIRECT_URL
-      }`,
+      loggedIn: authService.isAuthenticated(),
+      authUrl: `${authHostUrl}/login?redirect_url=${authRedirectUrl}`,
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleClick(event) {
+  handleLogin(event) {
     event.preventDefault();
-    const { url } = this.state;
-    window.location.replace(url);
+    const { authUrl } = this.state;
+    window.location.replace(authUrl);
   }
 
   render() {
-    const { url } = this.state;
+    const { loggedIn, authUrl } = this.state;
+    if (loggedIn) {
+      return (
+        <Redirect to="/dashboard" />
+      );
+    }
     return (
       <main className=".container-fluid text-center login-page">
         <div className="login-page__header">
@@ -48,7 +58,7 @@ class LoginPage extends Component {
           <p>DevPulse Ratings & LMS Scores</p>
         </div>
         <div style={{ marginTop: '40px' }} title="Login with google">
-          <a href={url} onClick={this.handleClick} className="login-page__btn">
+          <a href={authUrl} onClick={this.handleLogin} className="login-page__btn" tabIndex={0}>
             <img src={googleLogo} alt="google-icon" className="login-page__btn-logo" />
             <span className="login-page__line" />
             <span className="login-page__btn-text">LOGIN WITH GOOGLE</span>
@@ -58,5 +68,15 @@ class LoginPage extends Component {
     );
   }
 }
+
+LoginPage.propTypes = {
+  authHostUrl: PropTypes.string,
+  authRedirectUrl: PropTypes.string,
+};
+
+LoginPage.defaultProps = {
+  authHostUrl: process.env.REACT_APP_ANDELA_AUTH_HOST,
+  authRedirectUrl: process.env.REACT_APP_GOOGLE_AUTH_REDIRECT_URL,
+};
 
 export default LoginPage;
