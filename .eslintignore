@@ -4,6 +4,9 @@ src/**/*.svg
 # css
 src/**/*.css
 
+# fonts
+src/**/*.otf
+
 # serviceworker file
 src/**/registerServiceWorker.js
 

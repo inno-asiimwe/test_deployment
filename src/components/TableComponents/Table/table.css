@@ -1,0 +1,15 @@
+.dashboard-table__container {
+  overflow-X: auto;
+}
+
+.dashboard-table {
+  display: table;
+  margin: 0 60px 20px 60px;
+  width: 1320px;
+  font-family: "DIN Pro Light";
+  font-weight: 100;
+  border: 0 none black;
+  background-color: transparent;
+  border-collapse: separate;
+  border-spacing: 0px 8px;
+}

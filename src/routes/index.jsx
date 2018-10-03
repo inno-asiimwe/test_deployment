@@ -7,14 +7,15 @@ import {
 
 import LoginPage from '../views/LoginPage';
 import DashboardPage from '../views/DashboardPage';
-import PageNotFoundPage from '../views/PageNotFoundPage';
+import NotFoundPage from '../views/NotFoundPage';
 
 const Routes = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={DashboardPage} />
+      <Route exact path="/" component={LoginPage} />
       <Route path="/login" component={LoginPage} />
-      <Route component={PageNotFoundPage} />
+      <Route exact path="/dashboard" component={DashboardPage} />
+      <Route component={NotFoundPage} />
     </Switch>
   </Router>
 );

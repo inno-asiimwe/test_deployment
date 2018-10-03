@@ -1,5 +1,15 @@
+@font-face {
+  font-family: "DIN Pro";
+  src: url("static/fonts/FontFont - DINPro.otf");
+}
+
+@font-face {
+  font-family: "DIN Pro Light";
+  src: url("static/fonts/FontFont - DINPro-Light.otf");
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "DIN Pro", sans-serif;
 }
