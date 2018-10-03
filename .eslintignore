@@ -12,3 +12,6 @@ src/**/registerServiceWorker.js
 
 # build files
 build/*
+
+# snapshot files
+src/**/*.snap
