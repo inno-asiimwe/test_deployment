@@ -1,11 +1,11 @@
 @font-face {
   font-family: "DIN Pro";
-  src: url("static/fonts/FontFont - DINPro.otf");
+  src: url("static/fonts/FontFont\ -\ DINPro.otf");
 }
 
 @font-face {
   font-family: "DIN Pro Light";
-  src: url("static/fonts/FontFont - DINPro-Light.otf");
+  src: url("static/fonts/FontFont\ -\ DINPro-Light.otf");
 }
 
 body {
